@@ -1,0 +1,9 @@
+# Generated from CLion C/C++ Code Style settings
+---
+Language: Cpp
+BasedOnStyle: LLVM
+ColumnLimit: 120
+IndentWidth: 4
+AllowShortFunctionsOnASingleLine: Empty
+
+...
