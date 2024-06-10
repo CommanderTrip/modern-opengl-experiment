@@ -3,6 +3,7 @@
 #include <GLFW/glfw3.h>
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
+void processInput(GLFWwindow *window);
 
 int main() {
     std::cout << "Hello, OpenGL!" << std::endl;
@@ -33,6 +34,14 @@ int main() {
 
     while(!glfwWindowShouldClose(window))
     {
+        // Input handle
+        processInput(window);
+
+        // Render commands
+        glClearColor(1.0F, 0.25F, 1.0F, 1.0F);
+        glClear(GL_COLOR_BUFFER_BIT);
+
+        // check and call events and swap the buffers
         glfwSwapBuffers(window);
         glfwPollEvents();
     }
@@ -44,4 +53,9 @@ int main() {
 void framebuffer_size_callback(GLFWwindow* window, const int width, const int height)
 {
     glViewport(0, 0, width, height);
+}
+
+void processInput(GLFWwindow *window)
+{
+    if(glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) glfwSetWindowShouldClose(window, true);
 }
