@@ -3,7 +3,7 @@ project(modern_opengl_experiment)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(modern_opengl_experiment main.cpp)
+add_executable(modern_opengl_experiment main.cpp OpenGL/src/glad.c)
 
 target_include_directories(modern_opengl_experiment PUBLIC OpenGL/include)
 
