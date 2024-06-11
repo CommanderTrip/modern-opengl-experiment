@@ -1,18 +1,21 @@
-#include <GLFW/glfw3.h>
-#include <glad/glad.h>
 #include <iostream>
+#include <glad/glad.h>
+#include <GLFW/glfw3.h>
+
 
 constexpr unsigned int SCREEN_WIDTH = 1280;
 constexpr unsigned int SCREEN_HEIGHT = 720;
 
+// TODO: How do I realign this?
 const char *vertexShaderSource = "#version 330 core\n"
-                                 "layout (location = 0) in vec3 aPos;\n"
-                                 "void main()\n"
-                                 "{\n"
-                                 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-                                 "}\0";
+        "layout (location = 0) in vec3 aPos;\n"
+        "void main()\n"
+        "{\n"
+        "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+        "}\0";
 
 void framebufferSizeCallback(GLFWwindow *window, int width, int height);
+
 void processInput(GLFWwindow *window);
 
 int main() {
@@ -43,8 +46,8 @@ int main() {
     // Vertex Input - 3 points of a triangle
     float vertices[] = {
         -0.5F, -0.5F, 0.0F, //
-        0.5F,  -0.5F, 0.0F, //
-        0.0F,  0.5F,  0.0F  //
+        0.5F, -0.5F, 0.0F, //
+        0.0F, 0.5F, 0.0F //
     };
 
     // Store the verticies on the memory for the GPU for the graphics pipeline
