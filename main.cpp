@@ -1,18 +1,19 @@
-#include <iostream>
-#include <glad/glad.h>
+#define GLFW_INCLUDE_NONE // prevent the GLFW header from including the OpenGL header and allow headers in any order
+
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
+#include <iostream>
 
 
-constexpr unsigned int SCREEN_WIDTH = 1280;
+constexpr unsigned int SCREEN_WIDTH  = 1280;
 constexpr unsigned int SCREEN_HEIGHT = 720;
 
-// TODO: How do I realign this?
 const char *vertexShaderSource = "#version 330 core\n"
-        "layout (location = 0) in vec3 aPos;\n"
-        "void main()\n"
-        "{\n"
-        "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-        "}\0";
+                                 "layout (location = 0) in vec3 aPos;\n"
+                                 "void main()\n"
+                                 "{\n"
+                                 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
+                                 "}\0";
 
 void framebufferSizeCallback(GLFWwindow *window, int width, int height);
 
@@ -45,12 +46,12 @@ int main() {
 
     // Vertex Input - 3 points of a triangle
     float vertices[] = {
-        -0.5F, -0.5F, 0.0F, //
-        0.5F, -0.5F, 0.0F, //
-        0.0F, 0.5F, 0.0F //
+            -0.5F, -0.5F, 0.0F, //
+            0.5F,  -0.5F, 0.0F, //
+            0.0F,  0.5F,  0.0F  //
     };
 
-    // Store the verticies on the memory for the GPU for the graphics pipeline
+    // Store the vertices on the memory for the GPU for the graphics pipeline
     unsigned int vertexBufferObject;
     glGenBuffers(1, &vertexBufferObject);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBufferObject);
@@ -63,12 +64,12 @@ int main() {
     glCompileShader(vertexShader);
 
     // Check shader compilation for errors
-    int success;
-    char info_log[512];
+    int  success;
+    char infoLog[512];
     glGetShaderiv(vertexShader, GL_COMPILE_STATUS, &success);
     if (!success) {
-        glGetShaderInfoLog(vertexShader, 512, nullptr, info_log);
-        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << info_log << "\n";
+        glGetShaderInfoLog(vertexShader, 512, nullptr, infoLog);
+        std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n" << infoLog << "\n";
     }
 
     // Rendera Loop
